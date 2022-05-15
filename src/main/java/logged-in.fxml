@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="LoggedInController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoggedIn">
+   <children>
+      <Label fx:id="loggedin" layoutX="163.0" layoutY="216.0" prefHeight="42.0" prefWidth="274.0" text="Logged in successfully!" textAlignment="CENTER" textFill="#fd0a0a">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="28.0" />
+         </font></Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="219.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../login.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="button_logout" layoutX="274.0" layoutY="313.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="79.0" text="Log out" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="212.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@login.png" />
+         </image>
+      </ImageView>
+   </children>
+   <effect>
+      <Glow>
+         <input>
+            <InnerShadow />
+         </input>
+      </Glow>
+   </effect>
 </AnchorPane>
