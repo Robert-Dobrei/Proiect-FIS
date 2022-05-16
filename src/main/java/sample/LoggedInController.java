@@ -20,8 +20,9 @@ public class LoggedInController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         button_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent actionEvent) {
-
+            public void handle(ActionEvent event) {
+                DButils.changeScene(event, "main.fxml", "Log in!", null);
             }
         });
-    }}
+    }
+}
