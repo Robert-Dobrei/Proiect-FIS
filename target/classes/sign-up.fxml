@@ -68,7 +68,7 @@
                   <Font name="Times New Roman" size="13.0" />
                </font>
             </RadioButton>
-            <Button layoutX="345.0" layoutY="353.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Finish!">
+            <Button fx:id="button_finish" layoutX="345.0" layoutY="353.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Finish!">
                <font>
                   <Font name="Times New Roman" size="14.0" />
                </font>
