@@ -53,22 +53,22 @@
                   <Font name="Times New Roman" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_first_name" layoutX="131.0" layoutY="141.0" />
-            <TextField fx:id="tf_last_name" layoutX="131.0" layoutY="179.0" />
-            <TextField fx:id="tf_username" layoutX="131.0" layoutY="217.0" />
-            <TextField fx:id="tf_password" layoutX="131.0" layoutY="253.0" />
-            <TextField fx:id="tf_details" layoutX="36.0" layoutY="342.0" prefHeight="46.0" prefWidth="248.0" />
-            <RadioButton fx:id="radio_button" layoutX="131.0" layoutY="292.0" mnemonicParsing="false" text="Buyer">
+            <TextField fx:id="firstname" layoutX="131.0" layoutY="141.0" />
+            <TextField fx:id="lastname" layoutX="131.0" layoutY="179.0" />
+            <TextField fx:id="username" layoutX="131.0" layoutY="217.0" />
+            <TextField fx:id="password" layoutX="131.0" layoutY="253.0" />
+            <TextField fx:id="details" layoutX="36.0" layoutY="342.0" prefHeight="46.0" prefWidth="248.0" />
+            <RadioButton fx:id="buyer" layoutX="131.0" layoutY="292.0" mnemonicParsing="false" text="Buyer">
                <font>
                   <Font name="Times New Roman" size="13.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="radio_seller" layoutX="230.0" layoutY="291.0" mnemonicParsing="false" text="Seller">
+            <RadioButton fx:id="seller" layoutX="230.0" layoutY="291.0" mnemonicParsing="false" text="Seller">
                <font>
                   <Font name="Times New Roman" size="13.0" />
                </font>
             </RadioButton>
-            <Button fx:id="button_finish" layoutX="345.0" layoutY="353.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Finish!">
+            <Button fx:id="finish" layoutX="345.0" layoutY="353.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Finish!">
                <font>
                   <Font name="Times New Roman" size="14.0" />
                </font>
