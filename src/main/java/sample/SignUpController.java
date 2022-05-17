@@ -39,6 +39,7 @@ public class SignUpController implements Initializable {
         buyer.setToggleGroup(togglegroup);
         seller.setToggleGroup(togglegroup);
 
+
         finish.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -61,7 +62,7 @@ public class SignUpController implements Initializable {
         finish.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DButils.changeScene(actionEvent,"sample.fxml","Log in!",null);
+                DButils.changeScene(actionEvent,"/main.fxml","Log in!",null);
             }
         });
 

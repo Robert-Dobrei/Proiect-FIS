@@ -12,30 +12,21 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library>
-        <CLASSES />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-8.0.29.jar!/" />
+        </CLASSES>
         <JAVADOC />
-        <SOURCES>
-          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-8.0.29.zip!/mysql-connector-java-8.0.29/src/build/java" />
-          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-8.0.29.zip!/mysql-connector-java-8.0.29/src/demo/java" />
-          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-8.0.29.zip!/mysql-connector-java-8.0.29/src/generated/java" />
-          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-8.0.29.zip!/mysql-connector-java-8.0.29/src/legacy/java" />
-          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-8.0.29.zip!/mysql-connector-java-8.0.29/src/main/core-api/java" />
-          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-8.0.29.zip!/mysql-connector-java-8.0.29/src/main/core-impl/java" />
-          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-8.0.29.zip!/mysql-connector-java-8.0.29/src/main/protocol-impl/java" />
-          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-8.0.29.zip!/mysql-connector-java-8.0.29/src/main/user-api/java" />
-          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-8.0.29.zip!/mysql-connector-java-8.0.29/src/main/user-impl/java" />
-          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-8.0.29.zip!/mysql-connector-java-8.0.29/src/test/java" />
-        </SOURCES>
+        <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:11.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:11.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:11.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:11.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:11.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:11.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:11.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:11.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:18.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:18.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:18.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:18.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:18.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:18.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:18.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:18.0.1" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.29" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.19.4" level="project" />
   </component>
