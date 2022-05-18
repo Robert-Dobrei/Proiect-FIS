@@ -34,7 +34,6 @@ public class Controller implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 DButils.logInUser(event, tf_username.getText(), tf_password.getText());
-                DButils.changeScene(event, "/logged-in.fxml", "Welcome!", null, null);
             }
         });
         button_signup.setOnAction(new EventHandler<ActionEvent>() {

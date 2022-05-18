@@ -39,6 +39,8 @@ public class SignUpController implements Initializable {
         buyer.setToggleGroup(togglegroup);
         seller.setToggleGroup(togglegroup);
 
+        buyer.setSelected(true);
+
         finish.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -46,7 +48,7 @@ public class SignUpController implements Initializable {
 
                 if(!username.getText().trim().isEmpty() && !password.getText().trim().isEmpty()){
                         DButils.signUpUser(event, username.getText(), password.getText(), toggleName);
-                        DButils.changeScene(event,"/main.fxml","Log in!",null, null);
+                        DButils.changeScene(event,"/main.fxml","Login",null, null);
                     }
                  else {
                     System.out.println("Please fill in all information!");
@@ -56,5 +58,5 @@ public class SignUpController implements Initializable {
                 }
             }
         });
-//cevaaaa
+
     }}
