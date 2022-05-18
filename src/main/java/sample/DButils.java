@@ -41,8 +41,8 @@ public class DButils {
     PreparedStatement psCheckUserExists=null;
     ResultSet resultSet=null;
 try{
-    connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "Inviere2018#");
-    psCheckUserExists = connection.prepareStatement("SELECT * FROM users_info WHERE name = ?");
+    connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "Inviere2018#");
+    psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE name = ?");
     psCheckUserExists.setString(1, username);
     resultSet=psCheckUserExists.executeQuery();
 
@@ -52,7 +52,7 @@ try{
         alert.setContentText("You cannot use this username.");
         alert.show();
     }else{
-        psInsert = connection.prepareStatement("INSERT INTO users_info (name, password) VALUES (?,?)");
+        psInsert = connection.prepareStatement("INSERT INTO users (username, password) VALUES (?,?)");
         psInsert.setString(1,username);
         psInsert.setString(2,password);
         psInsert.executeUpdate();
@@ -100,8 +100,8 @@ public static void logInUser(ActionEvent event, String username, String password
         ResultSet resultSet = null;
 
     try {
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "Inviere2018#");
-        preparedStatement = connection.prepareStatement("SELECT password FROM users_info WHERE name = ?");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "Inviere2018#");
+        preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
         preparedStatement.setString(1, username);
         resultSet = preparedStatement.executeQuery();
 
