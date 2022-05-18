@@ -10,6 +10,9 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static sample.DButils.changeScene;
+import static sample.DButils.logInUser;
+
 public class Controller implements Initializable {
 
     @FXML
@@ -30,13 +33,13 @@ public class Controller implements Initializable {
         button_login.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DButils.logInUser(event, tf_username.getText(), tf_password.getText());
+                logInUser(event, tf_username.getText(), tf_password.getText());
             }
         });
         button_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DButils.changeScene(event, "sign-up.fxml", "Signup", null);
+                DButils.changeScene(event, "/sign-up.fxml", "Signup", null);
             }
         });
     }
