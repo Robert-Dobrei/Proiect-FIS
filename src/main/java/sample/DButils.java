@@ -41,8 +41,8 @@ public class DButils {
     PreparedStatement psCheckUserExists=null;
     ResultSet resultSet=null;
 try{
-    connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "proiectFIS");
-    psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
+    connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "Inviere2018#");
+    psCheckUserExists = connection.prepareStatement("SELECT * FROM users_info WHERE name = ?");
     psCheckUserExists.setString(1, username);
     resultSet=psCheckUserExists.executeQuery();
 
@@ -52,12 +52,12 @@ try{
         alert.setContentText("You cannot use this username.");
         alert.show();
     }else{
-        psInsert = connection.prepareStatement("INSERT INTO users (username, password) VALUES (? ?)");
+        psInsert = connection.prepareStatement("INSERT INTO users_info (name, password) VALUES (?,?)");
         psInsert.setString(1,username);
         psInsert.setString(2,password);
         psInsert.executeUpdate();
 
-        changeScene(event, "logged-in.fxml", "Welcome!", username);
+        changeScene(event, "/logged-in.fxml", "Welcome!", username);
     }
     }catch (SQLException e){
     e.printStackTrace();
@@ -100,8 +100,8 @@ public static void logInUser(ActionEvent event, String username, String password
         ResultSet resultSet = null;
 
     try {
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "proiectFIS");
-        preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "Inviere2018#");
+        preparedStatement = connection.prepareStatement("SELECT password FROM users_info WHERE name = ?");
         preparedStatement.setString(1, username);
         resultSet = preparedStatement.executeQuery();
 
@@ -114,7 +114,7 @@ public static void logInUser(ActionEvent event, String username, String password
             while (resultSet.next()) {
                 String retrievedPassword = resultSet.getString("password");
             if (retrievedPassword.equals(password)){
-                changeScene(event, "logged-in.fxml", "Welcome!", username);
+                changeScene(event, "/logged-in.fxml", "Welcome!", username);
             }else{
                 System.out.println("Passwords did not match!");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
