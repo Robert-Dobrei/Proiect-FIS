@@ -139,7 +139,7 @@ public static void logInUser(ActionEvent event, String username, String password
                 String retrievedPassword = resultSet.getString("password");
                 String retrievedRole = resultSet.getString("role");
             if (retrievedPassword.equals(encodePassword(username,password))){
-                changeScene(event, "/logged-in.fxml", "Welcome!", null, null);
+                changeScene(event, "/dashboard-buyer.fxml", "Welcome!", null, null);
             }else{
                 System.out.println("Passwords did not match!");
                 Alert alert = new Alert(Alert.AlertType.ERROR);

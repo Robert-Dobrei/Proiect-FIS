@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.BdashController">
+   <left>
+      <VBox prefHeight="400.0" prefWidth="133.0" style="-fx-background-color: #E0E0E0;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="button_list" mnemonicParsing="false" prefHeight="86.0" prefWidth="137.0" text="Product list" textAlignment="CENTER">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font></Button>
+            <Button fx:id="button_cart" mnemonicParsing="false" prefHeight="86.0" prefWidth="146.0" text="Shopping cart">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Button>
+            <AnchorPane prefHeight="201.0" prefWidth="134.0">
+               <children>
+                  <Button fx:id="button_logout" layoutX="41.0" layoutY="163.0" mnemonicParsing="false" text="Log out">
+                     <font>
+                        <Font name="Times New Roman Italic" size="12.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="95.0" fitWidth="97.0" layoutX="19.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo.png" />
+                     </image></ImageView>
+               </children></AnchorPane>
+         </children></VBox>
+   </left>
+</BorderPane>
