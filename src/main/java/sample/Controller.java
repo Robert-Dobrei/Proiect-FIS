@@ -33,13 +33,15 @@ public class Controller implements Initializable {
         button_login.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                logInUser(event, tf_username.getText(), tf_password.getText());
+                DButils.logInUser(event, tf_username.getText(), tf_password.getText());
+                DButils.changeScene(event, "/logged-in.fxml", "Welcome!", null, null);
             }
         });
         button_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DButils.changeScene(event, "/sign-up.fxml", "Signup", null);
+
+                DButils.changeScene(event, "/sign-up.fxml", "Signup", null, null);
             }
         });
     }

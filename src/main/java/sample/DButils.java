@@ -13,13 +13,14 @@ import java.sql.*;
 
 
 public class DButils {
-    public static void changeScene(ActionEvent event, String fxmlFile, String title,String username) {
+    public static void changeScene(ActionEvent event, String fxmlFile, String title,String username, String role) {
         Parent root = null;
-        if(username != null ) {
+        if(username != null && role!=null) {
             try {
                 FXMLLoader loader = new FXMLLoader(DButils.class.getResource(fxmlFile));
                 root = loader.load();
-
+                LoggedInController loggedInController = loader.getController();
+                loggedInController.setUserInformation(username,role);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -35,13 +36,13 @@ public class DButils {
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
     }
-    public static void signUpUser(ActionEvent event, String username, String password) {
+    public static void signUpUser(ActionEvent event, String username, String password, String role)  {
     Connection connection=null;
     PreparedStatement psInsert=null;
     PreparedStatement psCheckUserExists=null;
     ResultSet resultSet=null;
 try{
-    connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "proiectFIS");
+    connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "Inviere2018#");
     psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
     psCheckUserExists.setString(1, username);
     resultSet=psCheckUserExists.executeQuery();
@@ -52,12 +53,13 @@ try{
         alert.setContentText("You cannot use this username.");
         alert.show();
     }else{
-        psInsert = connection.prepareStatement("INSERT INTO users (username, password) VALUES (?,?)");
+        psInsert = connection.prepareStatement("INSERT INTO users (username, password, role) VALUES (?,?, ?)");
         psInsert.setString(1,username);
         psInsert.setString(2,password);
+        psInsert.setString(3,role);
         psInsert.executeUpdate();
 
-        changeScene(event, "/logged-in.fxml", "Welcome!", username);
+       // changeScene(event, "logged-in.fxml", "Welcome!", username);
     }
     }catch (SQLException e){
     e.printStackTrace();
@@ -100,12 +102,12 @@ public static void logInUser(ActionEvent event, String username, String password
         ResultSet resultSet = null;
 
     try {
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "proiectFIS");
-        preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
+        connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "Inviere2018#");
+        preparedStatement = connection.prepareStatement("SELECT password, role FROM users WHERE username = ?");
         preparedStatement.setString(1, username);
         resultSet = preparedStatement.executeQuery();
 
-        if(resultSet.isBeforeFirst()){
+        if(!resultSet.isBeforeFirst()){
             System.out.println("User not found in the database!");
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Provided credentials are incorrect");
@@ -113,8 +115,9 @@ public static void logInUser(ActionEvent event, String username, String password
         }else{
             while (resultSet.next()) {
                 String retrievedPassword = resultSet.getString("password");
+                String retrievedRole = resultSet.getString("role");
             if (retrievedPassword.equals(password)){
-                changeScene(event, "/logged-in.fxml", "Welcome!", username);
+                changeScene(event, "/logged-in.fxml", "Welcome!", null, null);
             }else{
                 System.out.println("Passwords did not match!");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
