@@ -46,12 +46,10 @@ public class SignUpController implements Initializable {
                 String toggleName = ((RadioButton) togglegroup.getSelectedToggle()).getText();
 
                 if(!username.getText().trim().isEmpty() && !password.getText().trim().isEmpty()){
-                    try {
-                        DButils.signUpUser(event, username.getText(), password.getText());
-                    } catch (SQLException e) {
-                        e.printStackTrace();
+                        DButils.signUpUser(event, username.getText(), password.getText(), toggleName);
+                        DButils.changeScene(event,"/main.fxml","Log in!",null, null);
                     }
-                } else {
+                 else {
                     System.out.println("Please fill in all information!");
                     Alert alert= new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("Please fill in all information to sign up! ");
@@ -59,12 +57,7 @@ public class SignUpController implements Initializable {
                 }
             }
         });
-        finish.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DButils.changeScene(actionEvent,"/main.fxml","Log in!",null);
-            }
-        });
+
 
 
     }}
