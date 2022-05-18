@@ -56,7 +56,5 @@ public class SignUpController implements Initializable {
                 }
             }
         });
-
-
-
+//cevaaaa
     }}
