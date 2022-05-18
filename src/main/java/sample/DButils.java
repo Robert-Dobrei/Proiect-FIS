@@ -35,14 +35,14 @@ public class DButils {
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
     }
-    public static void signUpUser(ActionEvent event, String username, String password) throws SQLException {
+    public static void signUpUser(ActionEvent event, String username, String password) {
     Connection connection=null;
     PreparedStatement psInsert=null;
     PreparedStatement psCheckUserExists=null;
     ResultSet resultSet=null;
 try{
-    connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "Inviere2018#");
-    psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE name = ?");
+    connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "proiectFIS");
+    psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
     psCheckUserExists.setString(1, username);
     resultSet=psCheckUserExists.executeQuery();
 
@@ -100,7 +100,7 @@ public static void logInUser(ActionEvent event, String username, String password
         ResultSet resultSet = null;
 
     try {
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "Inviere2018#");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "proiectFIS");
         preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
         preparedStatement.setString(1, username);
         resultSet = preparedStatement.executeQuery();
