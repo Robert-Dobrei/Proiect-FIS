@@ -43,9 +43,9 @@ public class SignUpController implements Initializable {
         finish.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //String toggleName = ((RadioButton) togglegroup.getSelectedToggle()).getText();
+                String toggleName = ((RadioButton) togglegroup.getSelectedToggle()).getText();
 
-                if(username.getText().trim().isEmpty() && !password.getText().trim().isEmpty()){
+                if(!username.getText().trim().isEmpty() && !password.getText().trim().isEmpty()){
                     try {
                         DButils.signUpUser(event, username.getText(), password.getText());
                     } catch (SQLException e) {

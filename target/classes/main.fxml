@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #E0E0E0;">
          <children>
@@ -52,7 +52,7 @@
                   <Font name="Times New Roman Italic" size="14.0" />
                </font>
             </Label>
-            <Button id="button_signup" fx:id="button_signup" layoutX="209.0" layoutY="350.0" mnemonicParsing="false" style="-fx-cursor: hand; -fx-background-color: transparent;" text="Sign up!" textFill="#0834f7" underline="true">
+            <Button fx:id="button_signup" layoutX="209.0" layoutY="350.0" mnemonicParsing="false" style="-fx-cursor: hand; -fx-background-color: transparent;" text="Sign up!" textFill="#0834f7" underline="true">
                <font>
                   <Font name="Times New Roman Italic" size="14.0" />
                </font>
