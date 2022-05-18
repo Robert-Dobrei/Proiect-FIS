@@ -20,10 +20,10 @@ public class SignUpController implements Initializable {
     private TextField lastname;
 
     @FXML
-    private TextField f_username;
+    private TextField username;
 
     @FXML
-    private TextField f_password;
+    private TextField password;
 
     @FXML
     private RadioButton buyer;
@@ -44,8 +44,12 @@ public class SignUpController implements Initializable {
             public void handle(ActionEvent event) {
                 String toggleName = ((RadioButton) togglegroup.getSelectedToggle()).getText();
 
-                if(!f_username.getText().trim().isEmpty() && !f_password.getText().trim().isEmpty()){
-                    DButils.signUpUser(event, f_username.getText(), f_password.getText());
+                if(!username.getText().trim().isEmpty() && !password.getText().trim().isEmpty()){
+                    try {
+                        DButils.signUpUser(event, username.getText(), password.getText());
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 } else {
                     System.out.println("Please fill in all information!");
                     Alert alert= new Alert(Alert.AlertType.ERROR);
@@ -57,7 +61,7 @@ public class SignUpController implements Initializable {
         finish.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DButils.changeScene(actionEvent,"/logged-in.fxml","Logged in",null);
+                DButils.changeScene(actionEvent,"/main.fxml","Log in!",null);
             }
         });
 
