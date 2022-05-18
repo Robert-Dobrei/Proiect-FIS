@@ -9,8 +9,10 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
-
 
 public class DButils {
     public static void changeScene(ActionEvent event, String fxmlFile, String title,String username, String role) {
@@ -36,13 +38,34 @@ public class DButils {
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
     }
+
+    private static MessageDigest getMessageDigest() {
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("SHA-512");
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException("SHA-512 does not exist!");
+        }
+        return md;
+    }
+
+    private static String encodePassword(String salt, String password) {
+        MessageDigest md = getMessageDigest();
+        md.update(salt.getBytes(StandardCharsets.UTF_8));
+
+        byte[] hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
+
+        return new String(hashedPassword, StandardCharsets.UTF_8)
+                .replace("\"", "");
+    }
+
     public static void signUpUser(ActionEvent event, String username, String password, String role)  {
     Connection connection=null;
     PreparedStatement psInsert=null;
     PreparedStatement psCheckUserExists=null;
     ResultSet resultSet=null;
 try{
-    connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "Inviere2018#");
+    connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "proiectFIS");
     psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
     psCheckUserExists.setString(1, username);
     resultSet=psCheckUserExists.executeQuery();
@@ -53,13 +76,12 @@ try{
         alert.setContentText("You cannot use this username.");
         alert.show();
     }else{
-        psInsert = connection.prepareStatement("INSERT INTO users (username, password, role) VALUES (?,?, ?)");
+        psInsert = connection.prepareStatement("INSERT INTO users (username, password, role) VALUES (?, ?, ?)");
         psInsert.setString(1,username);
-        psInsert.setString(2,password);
+        psInsert.setString(2,encodePassword(username, password));
         psInsert.setString(3,role);
         psInsert.executeUpdate();
 
-       // changeScene(event, "logged-in.fxml", "Welcome!", username);
     }
     }catch (SQLException e){
     e.printStackTrace();
@@ -102,7 +124,7 @@ public static void logInUser(ActionEvent event, String username, String password
         ResultSet resultSet = null;
 
     try {
-        connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "Inviere2018#");
+        connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "proiectFIS");
         preparedStatement = connection.prepareStatement("SELECT password, role FROM users WHERE username = ?");
         preparedStatement.setString(1, username);
         resultSet = preparedStatement.executeQuery();
@@ -116,7 +138,7 @@ public static void logInUser(ActionEvent event, String username, String password
             while (resultSet.next()) {
                 String retrievedPassword = resultSet.getString("password");
                 String retrievedRole = resultSet.getString("role");
-            if (retrievedPassword.equals(password)){
+            if (retrievedPassword.equals(encodePassword(username,password))){
                 changeScene(event, "/logged-in.fxml", "Welcome!", null, null);
             }else{
                 System.out.println("Passwords did not match!");
