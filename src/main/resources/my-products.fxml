@@ -2,10 +2,49 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MyProductsController">
+<AnchorPane prefHeight="400.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MyProductsController">
    <children>
-      <Label layoutX="286.0" layoutY="192.0" text="Products" />
+      <TextField fx:id="item_name" layoutX="153.0" layoutY="54.0">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="item_price" layoutX="189.0" layoutY="143.0" prefHeight="23.0" prefWidth="84.0">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="135.0" layoutY="25.0" text="Insert a name for the item">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="136.0" layoutY="113.0" text="Insert a price for the item">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="281.0" layoutY="147.0" text="Lei" textAlignment="CENTER">
+         <font>
+            <Font name="Times New Roman Italic" size="13.0" />
+         </font>
+      </Label>
+      <Button fx:id="button_add" layoutX="181.0" layoutY="328.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="108.0" style="-fx-background-color: #E0E0E0; -fx-cursor: hand;" text="Add item" textAlignment="CENTER">
+         <font>
+            <Font name="Times New Roman" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="167.0" layoutY="190.0" text="Item description">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="item_desc" layoutX="149.0" layoutY="222.0" prefHeight="70.0" prefWidth="164.0" promptText="Optional">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font>
+      </TextArea>
    </children>
 </AnchorPane>
