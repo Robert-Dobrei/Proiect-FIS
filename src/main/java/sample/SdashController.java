@@ -13,10 +13,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DashboardSeller implements Initializable {
+public class SdashController implements Initializable {
 
     @FXML
     private Button my_products;
+
     @FXML
     private Button my_orders;
 
@@ -29,7 +30,7 @@ public class DashboardSeller implements Initializable {
     private void loadPage(String page) throws IOException {
         Parent root = null;
         try {
-            root = FXMLLoader.load(DashboardSeller.class.getResource(page));
+            root = FXMLLoader.load(SdashController.class.getResource(page));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -43,7 +44,18 @@ public class DashboardSeller implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    loadPage("/my_orders.fxml");
+                    loadPage("/my-orders.fxml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        my_products.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    loadPage("/my-products.fxml");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

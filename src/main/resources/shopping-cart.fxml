@@ -4,16 +4,16 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="150.0" style="-fx-background-color: #E0E0E0;">
          <children>
             <ImageView fitHeight="70.0" fitWidth="116.0" layoutX="24.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@shopping-cart-logo-design-vector-21804322-removebg-preview.png" />
+                  <Image url="@cart-logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="order" layoutX="49.0" layoutY="348.0" mnemonicParsing="false" text="Order" />
+            <Button fx:id="order" layoutX="49.0" layoutY="348.0" mnemonicParsing="false" style="-fx-background-color: #D0D0D0;" text="Order" />
          </children>
       </AnchorPane>
       <TableView prefHeight="400.0" prefWidth="322.0">
