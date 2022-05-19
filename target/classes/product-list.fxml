@@ -47,7 +47,7 @@
                   <Font name="Times New Roman" size="13.0" />
                </font>
             </Label>
-            <Button layoutX="21.0" layoutY="273.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="85.0" style="-fx-background-color: #D0D0D0;" text="Add to cart">
+            <Button fx:id="button_add" layoutX="21.0" layoutY="273.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="85.0" style="-fx-background-color: #D0D0D0;" text="Add to cart">
                <font>
                   <Font name="Times New Roman Bold" size="13.0" />
                </font>

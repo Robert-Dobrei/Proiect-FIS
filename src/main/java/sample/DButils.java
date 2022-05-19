@@ -65,7 +65,7 @@ public class DButils {
     PreparedStatement psCheckUserExists=null;
     ResultSet resultSet=null;
 try{
-    connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "Inviere2018#");
+    connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "proiectFIS");
     psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
     psCheckUserExists.setString(1, username);
     resultSet=psCheckUserExists.executeQuery();
@@ -124,7 +124,7 @@ public static void logInUser(ActionEvent event, String username, String password
         ResultSet resultSet = null;
 
     try {
-        connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "Inviere2018#");
+        connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "proiectFIS");
         preparedStatement = connection.prepareStatement("SELECT password, role FROM users WHERE username = ?");
         preparedStatement.setString(1, username);
         resultSet = preparedStatement.executeQuery();
@@ -139,7 +139,11 @@ public static void logInUser(ActionEvent event, String username, String password
                 String retrievedPassword = resultSet.getString("password");
                 String retrievedRole = resultSet.getString("role");
             if (retrievedPassword.equals(encodePassword(username,password))){
-                changeScene(event, "/dashboard-buyer.fxml", "Welcome!", null, null);
+                if(retrievedRole.equals("Buyer")) {
+                    changeScene(event, "/dashboard-buyer.fxml", "Welcome!", null, null);
+                } else {
+                    changeScene(event, "/dashboard-seller.fxml", "Welcome!", null, null);
+                }
             }else{
                 System.out.println("Passwords did not match!");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
