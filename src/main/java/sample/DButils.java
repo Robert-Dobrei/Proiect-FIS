@@ -65,7 +65,7 @@ public class DButils {
     PreparedStatement psCheckUserExists=null;
     ResultSet resultSet=null;
 try{
-    connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "proiectFIS");
+    connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "Inviere2018#");
     psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
     psCheckUserExists.setString(1, username);
     resultSet=psCheckUserExists.executeQuery();
@@ -124,7 +124,7 @@ public static void logInUser(ActionEvent event, String username, String password
         ResultSet resultSet = null;
 
     try {
-        connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "proiectFIS");
+        connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "Inviere2018#");
         preparedStatement = connection.prepareStatement("SELECT password, role FROM users WHERE username = ?");
         preparedStatement.setString(1, username);
         resultSet = preparedStatement.executeQuery();
