@@ -20,6 +20,9 @@ public class SignUpController implements Initializable {
     private TextField lastname;
 
     @FXML
+    private TextField phone_nr;
+
+    @FXML
     private TextField username;
 
     @FXML
@@ -34,6 +37,10 @@ public class SignUpController implements Initializable {
     @FXML
     private Button finish;
 
+    @FXML
+    private Button ret;
+
+
     public void initialize(URL location, ResourceBundle resources){
         ToggleGroup togglegroup=new ToggleGroup();
         buyer.setToggleGroup(togglegroup);
@@ -46,8 +53,8 @@ public class SignUpController implements Initializable {
             public void handle(ActionEvent event) {
                 String toggleName = ((RadioButton) togglegroup.getSelectedToggle()).getText();
 
-                if(!username.getText().trim().isEmpty() && !password.getText().trim().isEmpty()){
-                        DButils.signUpUser(event, username.getText(), password.getText(), toggleName);
+                if(!username.getText().trim().isEmpty() && !password.getText().trim().isEmpty() && !firstname.getText().trim().isEmpty() && !lastname.getText().trim().isEmpty() && !phone_nr.getText().trim().isEmpty()){
+                        DButils.signUpUser(event, username.getText(), password.getText(), toggleName, firstname.getText()+" "+lastname.getText(), phone_nr.getText());
                         DButils.changeScene(event,"/main.fxml","Login",null, null);
                     }
                  else {
@@ -56,6 +63,13 @@ public class SignUpController implements Initializable {
                     alert.setContentText("Please fill in all information to sign up! ");
                     alert.show();
                 }
+            }
+        });
+
+        ret.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DButils.changeScene(event, "/main.fxml", "Log in", null, null);
             }
         });
 

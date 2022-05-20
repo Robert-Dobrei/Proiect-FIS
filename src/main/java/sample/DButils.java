@@ -14,7 +14,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 
-public class DButils {
+public class DButils{
+
+    private static String s_name;
+    private static String phone_nr;
+
     public static void changeScene(ActionEvent event, String fxmlFile, String title,String username, String role) {
         Parent root = null;
         if(username != null && role!=null) {
@@ -59,7 +63,7 @@ public class DButils {
                 .replace("\"", "");
     }
 
-    public static void signUpUser(ActionEvent event, String username, String password, String role)  {
+    public static void signUpUser(ActionEvent event, String username, String password, String role, String name, String phone)  {
     Connection connection=null;
     PreparedStatement psInsert=null;
     PreparedStatement psCheckUserExists=null;
@@ -76,10 +80,12 @@ try{
         alert.setContentText("You cannot use this username.");
         alert.show();
     }else{
-        psInsert = connection.prepareStatement("INSERT INTO users (username, password, role) VALUES (?, ?, ?)");
+        psInsert = connection.prepareStatement("INSERT INTO users (username, password, role, name, phone_nr) VALUES (?, ?, ?, ?, ?)");
         psInsert.setString(1,username);
         psInsert.setString(2,encodePassword(username, password));
         psInsert.setString(3,role);
+        psInsert.setString(4,name);
+        psInsert.setString(5,phone);
         psInsert.executeUpdate();
 
     }
@@ -118,6 +124,7 @@ try{
 
 
 }
+
 public static void logInUser(ActionEvent event, String username, String password){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -125,7 +132,7 @@ public static void logInUser(ActionEvent event, String username, String password
 
     try {
         connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "proiectFIS");
-        preparedStatement = connection.prepareStatement("SELECT password, role FROM users WHERE username = ?");
+        preparedStatement = connection.prepareStatement("SELECT password, role, name, phone_nr FROM users WHERE username = ?");
         preparedStatement.setString(1, username);
         resultSet = preparedStatement.executeQuery();
 
@@ -138,11 +145,15 @@ public static void logInUser(ActionEvent event, String username, String password
             while (resultSet.next()) {
                 String retrievedPassword = resultSet.getString("password");
                 String retrievedRole = resultSet.getString("role");
+                String retrievedName = resultSet.getString("name");
+                String retrievedNumber = resultSet.getString("phone_nr");
             if (retrievedPassword.equals(encodePassword(username,password))){
                 if(retrievedRole.equals("Buyer")) {
-                    changeScene(event, "/dashboard-buyer.fxml", "Welcome!", null, null);
+                    changeScene(event, "/dashboard-buyer.fxml", "OnlineShop", null, null);
                 } else {
-                    changeScene(event, "/dashboard-seller.fxml", "Welcome!", null, null);
+                    s_name=retrievedName;
+                    phone_nr=retrievedNumber;
+                    changeScene(event, "/dashboard-seller.fxml", "OnlineShop", null, null);
                 }
             }else{
                 System.out.println("Passwords did not match!");
@@ -177,6 +188,67 @@ public static void logInUser(ActionEvent event, String username, String password
                 e.printStackTrace();
             }
         }
+    }
+    public static void addItem(ActionEvent event, String name, String price, String desc)  {
+        Connection connection=null;
+        PreparedStatement psInsert=null;
+        PreparedStatement psCheckItemExists=null;
+        ResultSet resultSet=null;
+        try{
+            connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "proiectFIS");
+            psCheckItemExists = connection.prepareStatement("SELECT * FROM items WHERE product_name = ?");
+            psCheckItemExists.setString(1, name);
+            resultSet=psCheckItemExists.executeQuery();
+
+            if(resultSet.isBeforeFirst()){
+                System.out.println("Item already exists");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("An item with the inserted name already exists.");
+                alert.show();
+            }else{
+                psInsert = connection.prepareStatement("INSERT INTO items (product_name, price, description, seller_name, phone_number) VALUES (?, ?, ?, ?, ?)");
+                psInsert.setString(1,name);
+                psInsert.setString(2,price);
+                psInsert.setString(3,desc);
+                psInsert.setString(4,s_name);
+                psInsert.setString(5,phone_nr);
+                psInsert.executeUpdate();
+
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            if (resultSet!=null){
+                try{
+                    resultSet.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (psCheckItemExists!=null){
+                try{
+                    psCheckItemExists.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (psInsert!=null){
+                try{
+                    psInsert.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (connection!=null){
+                try{
+                    connection.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
     }
 }
 

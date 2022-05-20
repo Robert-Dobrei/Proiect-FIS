@@ -3,6 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -13,13 +14,16 @@
                   <Image url="@cart-logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="order" layoutX="49.0" layoutY="348.0" mnemonicParsing="false" style="-fx-background-color: #D0D0D0;" text="Order" />
+            <Button fx:id="order" layoutX="32.0" layoutY="308.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="83.0" style="-fx-background-color: #D0D0D0; -fx-cursor: hand;" text="Order">
+               <font>
+                  <Font name="Times New Roman" size="16.0" />
+               </font></Button>
          </children>
       </AnchorPane>
       <TableView prefHeight="400.0" prefWidth="322.0">
         <columns>
-          <TableColumn fx:id="produs" prefWidth="167.0000427365303" text="Produs" />
-          <TableColumn fx:id="pret" minWidth="0.0" prefWidth="155.3999786376953" text="Pret" />
+          <TableColumn fx:id="produs" prefWidth="167.0000427365303" text="Product" />
+          <TableColumn fx:id="pret" minWidth="0.0" prefWidth="155.3999786376953" text="Price" />
         </columns>
       </TableView>
    </children>
