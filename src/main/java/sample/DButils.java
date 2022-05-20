@@ -15,6 +15,10 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 
 public class DButils{
+
+    private static String s_name;
+    private static String phone_nr;
+
     public static void changeScene(ActionEvent event, String fxmlFile, String title,String username, String role) {
         Parent root = null;
         if(username != null && role!=null) {
@@ -128,7 +132,7 @@ public static void logInUser(ActionEvent event, String username, String password
 
     try {
         connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "proiectFIS");
-        preparedStatement = connection.prepareStatement("SELECT password, role FROM users WHERE username = ?");
+        preparedStatement = connection.prepareStatement("SELECT password, role, name, phone_nr FROM users WHERE username = ?");
         preparedStatement.setString(1, username);
         resultSet = preparedStatement.executeQuery();
 
@@ -141,10 +145,14 @@ public static void logInUser(ActionEvent event, String username, String password
             while (resultSet.next()) {
                 String retrievedPassword = resultSet.getString("password");
                 String retrievedRole = resultSet.getString("role");
+                String retrievedName = resultSet.getString("name");
+                String retrievedNumber = resultSet.getString("phone_nr");
             if (retrievedPassword.equals(encodePassword(username,password))){
                 if(retrievedRole.equals("Buyer")) {
                     changeScene(event, "/dashboard-buyer.fxml", "OnlineShop", null, null);
                 } else {
+                    s_name=retrievedName;
+                    phone_nr=retrievedNumber;
                     changeScene(event, "/dashboard-seller.fxml", "OnlineShop", null, null);
                 }
             }else{
@@ -198,10 +206,12 @@ public static void logInUser(ActionEvent event, String username, String password
                 alert.setContentText("An item with the inserted name already exists.");
                 alert.show();
             }else{
-                psInsert = connection.prepareStatement("INSERT INTO items (product_name, price, description) VALUES (?, ?, ?)");
+                psInsert = connection.prepareStatement("INSERT INTO items (product_name, price, description, seller_name, phone_number) VALUES (?, ?, ?, ?, ?)");
                 psInsert.setString(1,name);
                 psInsert.setString(2,price);
                 psInsert.setString(3,desc);
+                psInsert.setString(4,s_name);
+                psInsert.setString(5,phone_nr);
                 psInsert.executeUpdate();
 
             }
