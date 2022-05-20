@@ -247,8 +247,13 @@ public static void logInUser(ActionEvent event, String username, String password
                 }
             }
         }
-
-
     }
+
+    public static Connection getConnection() throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "proiectFIS");
+
+        return connection;
+    }
+
 }
 
