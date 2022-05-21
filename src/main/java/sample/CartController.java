@@ -35,7 +35,7 @@ public class CartController implements Initializable {
         order.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                DButils.changeScene(event, "/order-placed.fxml","Order placed!", null,null);
             }
         });
 

@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.OrderPlaced">
    <children>
-      <Text layoutX="154.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The order has been placed!" wrappingWidth="271.16485595703125">
+      <Text layoutX="162.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your order has been placed!" wrappingWidth="275.96490478515625">
          <font>
             <Font name="Times New Roman" size="24.0" />
          </font>
       </Text>
+      <Text layoutX="219.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(You can close this window now)">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="224.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
