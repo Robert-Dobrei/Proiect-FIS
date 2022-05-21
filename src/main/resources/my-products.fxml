@@ -2,14 +2,21 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MyProductsController">
    <children>
-      <TableView fx:id="table" layoutX="-1.0" layoutY="-2.0" prefHeight="408.0" prefWidth="470.0">
+      <TableView fx:id="table" layoutX="-1.0" layoutY="-2.0" prefHeight="357.0" prefWidth="470.0">
         <columns>
-          <TableColumn fx:id="item_column" prefWidth="290.0" text="Item name" />
-          <TableColumn fx:id="price_column" prefWidth="179.0" text="Price" />
+          <TableColumn fx:id="item_column" prefWidth="164.60000306367874" text="Item name" />
+          <TableColumn fx:id="price_column" prefWidth="101.00001525878906" text="Price" />
+            <TableColumn fx:id="desc_column" prefWidth="203.99997558593748" text="Description" />
         </columns>
       </TableView>
+      <Button fx:id="delete" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" style="-fx-background-color: #E0E0E0; -fx-cursor: hand;" text="Delete item">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

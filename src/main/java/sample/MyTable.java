@@ -1,11 +1,12 @@
 package sample;
 
 public class MyTable {
-    private String name, price;
+    private String name, price, desc;
 
-    public MyTable(String name, String price) {
+    public MyTable(String name, String price, String desc) {
         this.name = name;
         this.price = price;
+        this.desc = desc;
     }
 
     public String getName() {
@@ -22,5 +23,13 @@ public class MyTable {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 }

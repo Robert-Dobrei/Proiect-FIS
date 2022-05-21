@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.OrderPlaced">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.OrderPlacedController">
    <children>
       <Text layoutX="161.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your order has been placed!" wrappingWidth="275.96490478515625">
          <font>
