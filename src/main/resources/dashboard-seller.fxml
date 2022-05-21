@@ -19,9 +19,9 @@
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="my_orders" mnemonicParsing="false" prefHeight="90.0" prefWidth="152.0" text="My orders">
+            <Button fx:id="my_orders" mnemonicParsing="false" prefHeight="90.0" prefWidth="152.0" text="Incoming orders">
                <font>
-                  <Font name="Times New Roman Bold" size="18.0" />
+                  <Font name="Times New Roman Bold" size="15.0" />
                </font>
             </Button>
             <AnchorPane prefHeight="223.0" prefWidth="132.0">

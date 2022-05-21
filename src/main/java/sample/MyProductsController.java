@@ -48,7 +48,7 @@ public class MyProductsController implements Initializable {
             rs = con.createStatement().executeQuery("SELECT * FROM items");
 
             while (rs.next()) {
-                if(rs.getString("seller_name").equals(DButils.getS_name()))
+                if(rs.getString("seller_name").equals(DButils.getName()))
                 oblist.add(new MyTable(rs.getString("product_name"), rs.getString("price"), rs.getString("description")));
             }
         } catch (SQLException e) {
@@ -133,7 +133,7 @@ public class MyProductsController implements Initializable {
                     rs = con.createStatement().executeQuery("SELECT * FROM items");
 
                     while (rs.next()) {
-                        if(rs.getString("seller_name").equals(DButils.getS_name()))
+                        if(rs.getString("seller_name").equals(DButils.getName()))
                             oblist.add(new MyTable(rs.getString("product_name"), rs.getString("price"), rs.getString("description")));
                     }
                 } catch (SQLException e) {
