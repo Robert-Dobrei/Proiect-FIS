@@ -1,49 +1,53 @@
 package sample;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import sample.DButils;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-
 public class MyProductsController implements Initializable {
-    @FXML
-    private TextField item_name;
 
     @FXML
-    private TextField item_price;
+    public TableView<MyTable> table;
 
     @FXML
-    private TextArea item_desc;
+    public TableColumn<MyTable, String> item_column;
 
     @FXML
-    private Button button_add;
+    public TableColumn<MyTable, String> price_column;
 
-    public void initialize(URL location, ResourceBundle resources){
+    ObservableList<MyTable> oblist = FXCollections.observableArrayList();
 
-        button_add.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-                if(!item_name.getText().trim().isEmpty() && !item_price.getText().trim().isEmpty()){
-                    DButils.addItem(event, item_name.getText(), item_price.getText(), item_desc.getText());
-                    item_name.setText(null);
-                    item_price.setText(null);
-                    item_desc.setText(null);
-                }
-                else {
-                    System.out.println("Please fill in all information!");
-                    Alert alert= new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("Please fill in all the item imformation! ");
-                    alert.show();
-                }
+        Connection con = null;
+        ResultSet rs = null;
+        try {
+            con = DButils.getConnection();
+            rs = con.createStatement().executeQuery("SELECT * FROM items");
+
+            while (rs.next()) {
+                if(rs.getString("seller_name").equals(DButils.getS_name()))
+                oblist.add(new MyTable(rs.getString("product_name"), rs.getString("price")));
             }
-        });
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-    }}
+        item_column.setCellValueFactory(new PropertyValueFactory<>("name"));
+        price_column.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        table.setItems(oblist);
+
+    }
+}
