@@ -44,8 +44,8 @@ public class ListController implements Initializable {
     private TableColumn<ModelTable, String> desc_column;
     @FXML
     private TableColumn<ModelTable, String> phone_column;
-   // @FXML
-    //private TableColumn<ModelTable, String> sellername_column;
+    @FXML
+    private TableColumn<ModelTable, String> sname_column;
 
     @FXML
     private TextField tf_search;
@@ -63,8 +63,7 @@ public class ListController implements Initializable {
 
             while (rs.next()) {
                 oblist.add(new ModelTable(rs.getString("product_name"), rs.getString("price"),
-                        rs.getString("description"), rs.getString("phone_number")));
-
+                        rs.getString("description"), rs.getString("seller_name"), rs.getString("phone_number")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -72,16 +71,10 @@ public class ListController implements Initializable {
         pn_column.setCellValueFactory(new PropertyValueFactory<>("name"));
         price_column.setCellValueFactory(new PropertyValueFactory<>("price"));
         desc_column.setCellValueFactory(new PropertyValueFactory<>("desc"));
+        sname_column.setCellValueFactory((new PropertyValueFactory<>("sname")));
         phone_column.setCellValueFactory((new PropertyValueFactory<>("phone")));
-        //sellername_column.setCellValueFactory((new PropertyValueFactory<>("sellername")));
-
-        
-
 
         table.setItems(oblist);
-
-
-      //  oblist=table.getSelectionModel().getSelectedItems();
 
         FilteredList<ModelTable> filteredTable = new FilteredList<>(oblist, b -> true);
         tf_search.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -97,9 +90,12 @@ public class ListController implements Initializable {
                     return true;
                 } else if (modeltable.getDesc().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true;
+                } else if(modeltable.getSname().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
+                } else if(modeltable.getPhone().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
                 } else
                     return false;
-
             });
         });
 
@@ -120,7 +116,6 @@ public class ListController implements Initializable {
                     throw new RuntimeException(e);
                 }
                 shop=table.getSelectionModel().getSelectedItem();
-            //    System.out.println(shop.getPhone());
                 CartController cartController=loader.getController();
                 cartController.setItem(shop);
 

@@ -43,8 +43,8 @@ public class CartController implements Initializable {
 
     public void setItem(ModelTable shop) {
 
-        this.total.setText(" Produsul: "+shop.getName()+ "\n Descrierea produsului: " + shop.getDesc() + "\nPretul:  "
-                + shop.getPrice() + "\nNumar de telefon: " + shop.getPhone());
+        this.total.setText(" Item: "+shop.getName()+ "\n Item description: " + shop.getDesc() + "\n Price:  "
+                + shop.getPrice() + " lei\n Seller's name: "+shop.getSname()+"\n Seller's phone number: " + shop.getPhone());
 
     }
 

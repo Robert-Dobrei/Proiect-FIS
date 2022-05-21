@@ -10,9 +10,10 @@
       <TableView fx:id="table" layoutY="47.0" prefHeight="312.0" prefWidth="471.0">
         <columns>
           <TableColumn fx:id="pn_column" prefWidth="104.39997100830078" text="Product name" />
-          <TableColumn fx:id="price_column" minWidth="0.0" prefWidth="50.5999755859375" text="Price" />
-            <TableColumn fx:id="desc_column" minWidth="0.0" prefWidth="195.20001220703125" text="Description" />
-            <TableColumn fx:id="phone_column" prefWidth="119.20001220703125" text="Phone" />
+          <TableColumn fx:id="price_column" minWidth="0.0" prefWidth="37.20001983642578" text="Price" />
+            <TableColumn fx:id="desc_column" minWidth="0.0" prefWidth="122.60000610351562" text="Description" />
+            <TableColumn fx:id="sname_column" prefWidth="103.79998779296875" text="Seller's name" />
+            <TableColumn fx:id="phone_column" prefWidth="98.0" text="Phone number" />
         </columns>
       </TableView>
       <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
@@ -24,6 +25,9 @@
             <Font name="Times New Roman" size="14.0" />
          </font>
       </TextField>
-      <Button fx:id="select" layoutX="14.0" layoutY="359.0" mnemonicParsing="false" text="Select" />
+      <Button fx:id="select" layoutX="22.0" layoutY="366.0" mnemonicParsing="false" style="-fx-background-color: #E0E0E0; -fx-cursor: hand;" text="Select">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>
