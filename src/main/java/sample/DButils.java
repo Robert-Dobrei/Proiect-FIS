@@ -254,6 +254,16 @@ public static void logInUser(ActionEvent event, String username, String password
         return connection;
     }
 
+    public static void Delete(String name) throws SQLException {
+        Connection connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root","Inviere2018#");
+        PreparedStatement preparedStatement = null;
+        preparedStatement = connection.prepareStatement("delete from items where product_name = ?");
+        preparedStatement.setString(1,name);
+        preparedStatement.execute();
+        ListController.Update();
+
+    }
+
 
 }
 

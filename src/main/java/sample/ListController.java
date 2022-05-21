@@ -128,6 +128,9 @@ public class ListController implements Initializable {
         });
 
     }
+    public static void Update(){
+     //   table.refresh();
+    }
 
 
 }
