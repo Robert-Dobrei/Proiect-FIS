@@ -16,7 +16,7 @@ import java.sql.*;
 
 public class DButils{
 
-    private static String s_name;
+    private static String name;
     private static String phone_nr;
 
     public static void changeScene(ActionEvent event, String fxmlFile, String title,String username, String role) {
@@ -69,7 +69,7 @@ public class DButils{
     PreparedStatement psCheckUserExists=null;
     ResultSet resultSet=null;
 try{
-    connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "Inviere2018#");
+    connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/schemafis", "root", "proiectFIS");
     psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
     psCheckUserExists.setString(1, username);
     resultSet=psCheckUserExists.executeQuery();
@@ -148,11 +148,11 @@ public static void logInUser(ActionEvent event, String username, String password
                 String retrievedName = resultSet.getString("name");
                 String retrievedNumber = resultSet.getString("phone_nr");
             if (retrievedPassword.equals(encodePassword(username,password))){
+                name = retrievedName;
+                phone_nr = retrievedNumber;
                 if(retrievedRole.equals("Buyer")) {
                     changeScene(event, "/dashboard-buyer.fxml", "OnlineShop", null, null);
                 } else {
-                    s_name=retrievedName;
-                    phone_nr=retrievedNumber;
                     changeScene(event, "/dashboard-seller.fxml", "OnlineShop", null, null);
                 }
             }else{
@@ -210,8 +210,8 @@ public static void logInUser(ActionEvent event, String username, String password
                 psInsert.setString(1,name);
                 psInsert.setString(2,price);
                 psInsert.setString(3,desc);
-                psInsert.setString(4,s_name);
-                psInsert.setString(5,phone_nr);
+                psInsert.setString(4, DButils.name);
+                psInsert.setString(5, phone_nr);
                 psInsert.executeUpdate();
 
             }
@@ -262,9 +262,12 @@ public static void logInUser(ActionEvent event, String username, String password
         preparedStatement.execute();
     }
 
+    public static String getName() {
+        return name;
+    }
 
-    public static String getS_name() {
-        return s_name;
+    public static String getPhone_nr() {
+        return phone_nr;
     }
 }
 
