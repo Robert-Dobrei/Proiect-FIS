@@ -47,7 +47,7 @@ public class SdashController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    loadPage("/my-orders.fxml");
+                    loadPage("/seller-orders.fxml");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
