@@ -51,7 +51,7 @@ public class CartController implements Initializable {
         this.total.setText(" Item: "+shop.getName()+ "\n Item description: " + shop.getDesc() + "\n Price:  "
                 + shop.getPrice() + " lei\n Seller's name: "+shop.getSname()+"\n Seller's phone number: " + shop.getPhone());
 
-        this.name= shop.getName();
+        this.name = shop.getName();
     }
 
     Parent root;
