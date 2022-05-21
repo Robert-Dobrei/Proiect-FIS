@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PastOrders">
+   <children>
+      <TableView layoutX="169.0" layoutY="-2.0" prefHeight="400.0" prefWidth="430.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Product" />
+          <TableColumn prefWidth="75.0" text="Price" />
+            <TableColumn prefWidth="75.0" text="Description" />
+            <TableColumn prefWidth="91.99993896484375" text="Seller's name" />
+            <TableColumn prefWidth="89.60003662109375" text="Phone" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
