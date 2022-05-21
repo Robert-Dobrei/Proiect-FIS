@@ -255,5 +255,8 @@ public static void logInUser(ActionEvent event, String username, String password
         return connection;
     }
 
+    public static String getS_name() {
+        return s_name;
+    }
 }
 
