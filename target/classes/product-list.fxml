@@ -7,69 +7,27 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ListController">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="123.0" style="-fx-background-color: #E0E0E0;">
-         <children>
-            <Label layoutX="22.0" layoutY="27.0" text="Product name">
-               <font>
-                  <Font name="Times New Roman Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="47.0" layoutY="72.0" text="Price">
-               <font>
-                  <Font name="Times New Roman Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="p_name" layoutX="48.0" layoutY="43.0" text="Label" textAlignment="CENTER">
-               <font>
-                  <Font name="Times New Roman" size="13.0" />
-               </font></Label>
-            <Label fx:id="price" layoutX="48.0" layoutY="88.0" text="Label" textAlignment="CENTER">
-               <font>
-                  <Font name="Times New Roman" size="13.0" />
-               </font>
-            </Label>
-            <Label layoutX="24.0" layoutY="116.0" text="Seller's name">
-               <font>
-                  <Font name="Times New Roman Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="s_name" layoutX="49.0" layoutY="132.0" text="Label" textAlignment="CENTER">
-               <font>
-                  <Font name="Times New Roman" size="13.0" />
-               </font>
-            </Label>
-            <Label layoutX="12.0" layoutY="160.0" text="Seller's phone nr.">
-               <font>
-                  <Font name="Times New Roman Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="phone_nr" layoutX="49.0" layoutY="176.0" text="Label" textAlignment="CENTER">
-               <font>
-                  <Font name="Times New Roman" size="13.0" />
-               </font>
-            </Label>
-            <Button fx:id="button_add" layoutX="21.0" layoutY="273.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="85.0" style="-fx-background-color: #D0D0D0; -fx-cursor: hand;" text="Add to cart">
-               <font>
-                  <Font name="Times New Roman Bold" size="13.0" />
-               </font>
-            </Button>
-         </children>
-      </AnchorPane>
-      <TableView fx:id="table" layoutX="123.0" layoutY="47.0" prefHeight="353.0" prefWidth="348.0">
+      <TableView fx:id="table" layoutY="47.0" prefHeight="312.0" prefWidth="471.0">
         <columns>
           <TableColumn fx:id="pn_column" prefWidth="104.39997100830078" text="Product name" />
-          <TableColumn fx:id="price_column" minWidth="0.0" prefWidth="50.5999755859375" text="Price" />
-            <TableColumn fx:id="desc_column" minWidth="0.0" prefWidth="193.4000244140625" text="Description" />
+          <TableColumn fx:id="price_column" minWidth="0.0" prefWidth="37.20001983642578" text="Price" />
+            <TableColumn fx:id="desc_column" minWidth="0.0" prefWidth="122.60000610351562" text="Description" />
+            <TableColumn fx:id="sname_column" prefWidth="103.79998779296875" text="Seller's name" />
+            <TableColumn fx:id="phone_column" prefWidth="98.0" text="Phone number" />
         </columns>
       </TableView>
-      <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="153.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@search.png" />
          </image></ImageView>
-      <TextField fx:id="tf_search" layoutX="188.0" layoutY="13.0" prefHeight="29.0" prefWidth="251.0" promptText="Search">
+      <TextField fx:id="tf_search" layoutX="71.0" layoutY="13.0" prefHeight="29.0" prefWidth="251.0" promptText="Search">
          <font>
             <Font name="Times New Roman" size="14.0" />
          </font>
       </TextField>
+      <Button fx:id="select" layoutX="22.0" layoutY="366.0" mnemonicParsing="false" style="-fx-background-color: #E0E0E0; -fx-cursor: hand;" text="Select">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>

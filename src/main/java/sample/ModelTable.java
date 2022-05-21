@@ -1,13 +1,17 @@
 package sample;
 
 public class ModelTable {
-    private String name,price,desc;
 
-    public ModelTable(String name, String price, String desc) {
+    private String name,price,desc,phone,sname;
+
+    public ModelTable(String name, String price, String desc, String sname, String phone) {
         this.name = name;
         this.price = price;
         this.desc = desc;
+        this.phone = phone;
+        this.sname = sname;
     }
+
 
     public String getName() {
         return name;
@@ -31,5 +35,22 @@ public class ModelTable {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getSname() {
+        return sname;
+    }
+
+    public void setSname(String sname) {
+        this.sname = sname;
     }
 }
