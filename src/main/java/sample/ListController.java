@@ -50,6 +50,7 @@ public class ListController implements Initializable {
     @FXML
     private TextField tf_search;
     Parent root;
+
     ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
 
     @Override
