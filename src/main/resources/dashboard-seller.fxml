@@ -9,14 +9,19 @@
    <left>
       <VBox prefHeight="400.0" prefWidth="133.0" style="-fx-background-color: #E0E0E0;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="my_products" mnemonicParsing="false" prefHeight="89.0" prefWidth="152.0" text="My products" textAlignment="CENTER">
+            <Button fx:id="my_products" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="152.0" text="My items" textAlignment="CENTER">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="my_orders" mnemonicParsing="false" prefHeight="90.0" prefWidth="152.0" text="My orders">
+            <Button fx:id="add_product" mnemonicParsing="false" prefHeight="89.0" prefWidth="152.0" text="Add an item" textAlignment="CENTER">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="my_orders" mnemonicParsing="false" prefHeight="90.0" prefWidth="152.0" text="Incoming orders">
+               <font>
+                  <Font name="Times New Roman Bold" size="15.0" />
                </font>
             </Button>
             <AnchorPane prefHeight="223.0" prefWidth="132.0">

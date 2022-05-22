@@ -21,7 +21,7 @@ public class BdashController implements Initializable {
     private Button button_list;
 
     @FXML
-    private Button button_cart;
+    private Button past_orders;
 
     @FXML
     private Button button_logout;
@@ -53,11 +53,11 @@ public class BdashController implements Initializable {
             }
         });
 
-        button_cart.setOnAction(new EventHandler<ActionEvent>() {
+        past_orders.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    loadPage("/shopping-cart.fxml");
+                    loadPage("/buyer-orders.fxml");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

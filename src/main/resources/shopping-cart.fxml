@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CartController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="150.0" style="-fx-background-color: #E0E0E0;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="116.0" layoutX="24.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="116.0" layoutX="23.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@cart-logo.png" />
                </image>
@@ -20,11 +20,6 @@
                </font></Button>
          </children>
       </AnchorPane>
-      <TableView prefHeight="400.0" prefWidth="322.0">
-        <columns>
-          <TableColumn fx:id="produs" prefWidth="167.0000427365303" text="Product" />
-          <TableColumn fx:id="pret" minWidth="0.0" prefWidth="155.3999786376953" text="Price" />
-        </columns>
-      </TableView>
+      <Label fx:id="total" prefHeight="166.0" prefWidth="322.0" text="Label" />
    </children>
 </HBox>

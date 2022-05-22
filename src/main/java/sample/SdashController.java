@@ -19,6 +19,9 @@ public class SdashController implements Initializable {
     private Button my_products;
 
     @FXML
+    private Button add_product;
+
+    @FXML
     private Button my_orders;
 
     @FXML
@@ -44,7 +47,7 @@ public class SdashController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    loadPage("/my-orders.fxml");
+                    loadPage("/seller-orders.fxml");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -56,6 +59,17 @@ public class SdashController implements Initializable {
             public void handle(ActionEvent event) {
                 try {
                     loadPage("/my-products.fxml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        add_product.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    loadPage("/add-product.fxml");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
